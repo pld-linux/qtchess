@@ -1,3 +1,8 @@
+#
+# TODO:
+# - polish description
+# - .desktop file as Source1
+#
 
 Summary:	QtChess
 Summary(pl.UTF-8):	Szachy napisane w Qt
