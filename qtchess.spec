@@ -1,11 +1,10 @@
 #
 # TODO:
-# - polish description
 # - .desktop file as Source1
 #
 
-Summary:	QtChess
-Summary(pl.UTF-8):	Szachy napisane w Qt
+Summary:	QtChess - chess program with Qt user interface
+Summary(pl.UTF-8):	QtChess - szachy z interfejsem użytkownika opartym na Qt
 Name:		qtchess
 Version:	2.05
 Release:	1
@@ -21,15 +20,19 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 QtChess is the world's least powerful peer-to-peer Chess program.
-Written in C++, it has a 2-D Qt/OpenGL user interface and utilizes
+Written in C++, it has a 2D Qt/OpenGL user interface and utilizes
 TCP/IP for communications.
 
-#%description -l pl.UTF-8
+%description -l pl.UTF-8
+QtChess to program szachowy peer-to-peer o najmniejszych możliwościach
+na świecie. Jest napisany w C++, ma dwuwymiarowy interfejs użytkownika
+Qt/OpenGL i wykorzystuje do komunikacji protokół TCP/IP.
 
 %prep
-%setup -q -n scsi/backup/backup.d/%{name}2.d/
+%setup -q -c
 
 %build
+cd scsi/backup/backup.d/%{name}2.d
 export QTDIR=%{_prefix}
 qmake
 %{__make}
@@ -38,7 +41,7 @@ qmake
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_bindir}
 
-install qtchess $RPM_BUILD_ROOT%{_bindir}
+install scsi/backup/backup.d/%{name}2.d/qtchess $RPM_BUILD_ROOT%{_bindir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
