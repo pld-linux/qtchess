@@ -6,15 +6,17 @@
 Summary:	QtChess - chess program with Qt user interface
 Summary(pl.UTF-8):	QtChess - szachy z interfejsem użytkownika opartym na Qt
 Name:		qtchess
-Version:	2.05
+Version:	3.03
 Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://dl.sourceforge.net/qtchess/%{name}%{version}.d.tar
-# Source0-md5:	0aed29e2c8eb4c24f4a16861962b5228
+# Source0-md5:	722261e380f701b0c8ba8d0466dffd9d
 URL:		http://qtchess.sourceforge.net/
-BuildRequires:	qmake
-BuildRequires:	qt-devel
+BuildRequires:	QtGui-devel
+BuildRequires:	QtNetwork-devel
+BuildRequires:	QtOpenGL-devel
+BuildRequires:	qt4-qmake
 BuildRequires:	rpmbuild(macros) >= 1.129
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -32,16 +34,15 @@ Qt/OpenGL i wykorzystuje do komunikacji protokół TCP/IP.
 %setup -q -c
 
 %build
-cd scsi/backup/backup.d/%{name}2.d
-export QTDIR=%{_prefix}
-qmake
+cd %{name}3.d
+qt4-qmake
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_bindir}
 
-install scsi/backup/backup.d/%{name}2.d/qtchess $RPM_BUILD_ROOT%{_bindir}
+install %{name}3.d/qtchess $RPM_BUILD_ROOT%{_bindir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
