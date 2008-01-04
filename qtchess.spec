@@ -16,7 +16,7 @@ URL:		http://qtchess.sourceforge.net/
 BuildRequires:	QtGui-devel
 BuildRequires:	QtNetwork-devel
 BuildRequires:	QtOpenGL-devel
-BuildRequires:	qt4-qmake
+BuildRequires:	qt4-qmake >= 4.3.3-3
 BuildRequires:	rpmbuild(macros) >= 1.129
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -35,7 +35,7 @@ Qt/OpenGL i wykorzystuje do komunikacji protokół TCP/IP.
 
 %build
 cd %{name}3.d
-qt4-qmake
+qmake-qt4
 %{__make}
 
 %install
